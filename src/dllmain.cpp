@@ -5,6 +5,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
         CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Load, hModule, NULL, NULL);
+        LoadLibrary(L"crypthook");
         break;
     case DLL_PROCESS_DETACH:
         FreeLibrary(version_dll);
